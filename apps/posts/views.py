@@ -27,6 +27,7 @@ import json
 from apps.usuarios.templatetags.user_tags import puede_crear_post
 from django.utils import timezone
 
+
 # ========== VISTAS BASADAS EN CLASES ==========
 
 class AgregarCategoria(LoginRequiredMixin, CreateView):

@@ -388,3 +388,48 @@ class RegistroUsuarioForm(UserCreationForm):
                 raise ValidationError('Formato no válido. Use JPG, PNG o GIF.')
         
         return imagen
+class PerfilForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = [
+            'username', 'email', 'nombre', 'apellido', 
+            'fecha_nacimiento', 'telefono', 'imagen'
+        ]
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control',
+                'readonly': 'readonly'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control'
+            }),
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Tu nombre'
+            }),
+            'apellido': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Tu apellido'
+            }),
+            'fecha_nacimiento': forms.DateInput(attrs={
+                'class': 'form-control',
+                'type': 'date'
+            }),
+            'telefono': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Tu teléfono'
+            }),
+            'imagen': forms.FileInput(attrs={
+                'class': 'form-control',
+                'accept': 'image/*'
+            }),
+        }
+        labels = {
+            'username': 'Nombre de usuario',
+            'email': 'Correo electrónico',
+            'nombre': 'Nombre',
+            'apellido': 'Apellido',
+            'fecha_nacimiento': 'Fecha de nacimiento',
+            'telefono': 'Teléfono',
+            'imagen': 'Foto de perfil',
+        }
